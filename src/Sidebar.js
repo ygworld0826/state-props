@@ -1,14 +1,28 @@
 import React from 'react';
-// TODO : React Router DOM의 Link 컴포넌트를 import 합니다.
+import { Link } from 'react-router-dom';  // 🟢 Link 컴포넌트 불러오기
 
 const Sidebar = () => {
   return (
-    <section className="sidebar">
-      {/* TODO : Link 컴포넌트를 작성하고, to 속성을 이용하여 경로(path)를 연결합니다. */}
-      <i className="far fa-comment-dots"></i>
-      <i className="far fa-question-circle"></i>
-      <i className="far fa-user"></i>
-    </section>
+    <nav className="sidebar">
+      <ul>
+        <li>
+          {/* 🟢 <i> 태그를 사용해 Font Awesome 아이콘 표시 */}
+          <Link to="/">
+            <i className="far fa-comment-dots"></i> Tweets  {/* 🟢 <svg> 대신 <i> 사용 */}
+          </Link>
+        </li>
+        <li>
+          <Link to="/about">
+            <i className="far fa-question-circle"></i> About  {/* 🟢 <svg> 대신 <i> 사용 */}
+          </Link>
+        </li>
+        <li>
+          <Link to="/mypage">
+            <i className="far fa-user"></i> MyPage  {/* 🟢 <svg> 대신 <i> 사용 */}
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

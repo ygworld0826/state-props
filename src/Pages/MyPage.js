@@ -5,27 +5,30 @@ import './MyPage.css';
 import dummyTweets from '../static/dummyData';
 
 const MyPage = () => {
-  const filteredTweets = dummyTweets;
-  // TODO : 주어진 트윗 목록(dummyTweets)중 현재 유져인 Bob의 트윗만 보여줘야 합니다.
+  // 🟢 현재 유저인 'Bob'의 트윗만 필터링
+  const filteredTweets = dummyTweets.filter(tweet => tweet.username === 'Bob');
 
   return (
     <section className="myInfo">
       <div className="myInfo__container">
         <div className="myInfo__wrapper">
           <div className="myInfo__profile">
-            <img src={filteredTweets[1].picture} />
+            {/* 🟢 'Bob'의 프로필 사진을 표시 */}
+            <img src={filteredTweets[0].picture} alt="Bob's Profile" />
           </div>
           <div className="myInfo__detail">
             <p className="myInfo__detailName">
-              {filteredTweets[1].username} Profile
+              {filteredTweets[0].username} Profile
             </p>
             <p>28 팔로워 100 팔로잉</p>
           </div>
         </div>
       </div>
       <ul className="tweets__mypage">
-        <Tweet tweet={filteredTweets[0]} />
-        {/* TODO : 주어진 트윗 목록(dummyTweets)중 현재 유져인 Bob의 트윗만 보여줘야 합니다. */}
+        {/* 🟢 'Bob'의 트윗만 보여주기 */}
+        {filteredTweets.map((tweet) => (
+          <Tweet key={tweet.id} tweet={tweet} />
+        ))}
       </ul>
       <Footer />
     </section>
